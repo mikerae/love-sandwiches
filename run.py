@@ -1,6 +1,5 @@
 """Love Sandwiches is a CI Python Walkthrough Project """
 
-from pprint import pprint
 from google.oauth2.service_account import Credentials
 import gspread
 
@@ -26,7 +25,7 @@ def get_sales_data():
         print('Data should be six numbers, separated by commas')
         print('Example: 10,20,30,40,50,60\n')
 
-        data_str = input("Enter your data here: ")
+        data_str = input("Enter your data here:\n")
 
         sales_data = data_str.split(",")
 
