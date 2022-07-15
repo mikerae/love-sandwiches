@@ -1,6 +1,9 @@
 """Love Sandwiches is a CI Python Walkthrough Project """
-import gspread
+
+from pprint import pprint
 from google.oauth2.service_account import Credentials
+import gspread
+
 
 SCOPE = [
     "https://www.googleapis.com/auth/spreadsheets",
@@ -63,6 +66,29 @@ def update_sales_worksheet(data):
     print("Sales worksheet updatd successfully.\n")
 
 
-data = get_sales_data()
-sales_data = [int(num) for num in data]
-update_sales_worksheet(sales_data)
+def calculate_surplus_data(sales_data):
+    """ 
+    Compare sales with stock and calculate the surplus for ach item type.
+
+    The surplus is defined as the sales figure subtracted from the stock:
+    - Positive surplus indicates waste
+    - Negatie surplaus indicstes extra made when staco was sold out.
+    """
+    print("calculating surplus data...\n")
+    stock = SHEET.worksheet('stock').get_all_values()
+    stock_row = stock[-1]
+    print(stock_row)
+
+
+def main():
+    """
+    Call all program functions
+    """
+    data = get_sales_data()
+    sales_data = [int(num) for num in data]
+    update_sales_worksheet(sales_data)
+    calculate_surplus_data(sales_data)
+
+
+print("Welcome to Love Sandwiches data automation\n")
+main()
