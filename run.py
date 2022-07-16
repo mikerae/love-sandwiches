@@ -68,7 +68,7 @@ def update_worksheet(data, worksheet):
 
 def calculate_surplus_data(sales_row):
     """ 
-    Compare sales with stock and calculate the surplus for ach item type.
+    Compare sales with stock and calculate the surplus for each item type.
 
     The surplus is defined as the sales figure subtracted from the stock:
     - Positive surplus indicates waste
@@ -117,11 +117,24 @@ def calculate_stock_data(data):
     return new_stock_data
 
 
+def get_stock_values(data):
+    """
+    Creates list of sandwich types (headings) from row 0 of stock worksheets.
+    Creates a dictionary where the keys from the headings list are matched
+    with values from the stock-data list.
+    Retuns the dictionary (stock_values)
+    """
+    print("Creating new sandwich stocks ...\n")
+    headings = SHEET.worksheet('stock').get_all_values()[0]
+    dictionary = {headings[i]: data[i] for i in range(len(headings))}
+    return dictionary
+
+
 def main():
     """
     Call all program functions
     """
-    data = get_sales_data() 
+    data = get_sales_data()
     sales_data = [int(num) for num in data]
     update_worksheet(sales_data, 'sales')
     new_surplus_data = calculate_surplus_data(sales_data)
@@ -129,6 +142,8 @@ def main():
     sales_columns = get_last_five_entries_sales()
     stock_data = calculate_stock_data(sales_columns)
     update_worksheet(stock_data, 'stock')
+    stock_values = get_stock_values(stock_data)
+    print(f'Next markwt sandwich stocks are :\n {stock_values}')
 
 
 print("Welcome to Love Sandwiches data automation\n")
