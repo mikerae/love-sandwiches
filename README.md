@@ -1,6 +1,6 @@
 ![CI logo](https://codeinstitute.s3.amazonaws.com/fullstack/ci_logo_small.png)
 
-A deployed version of this project can be viewd ![here....](https://love-sandwiches-mr.herokuapp.com/)
+A deployed version of this project can be viewd [here....](https://love-sandwiches-mr.herokuapp.com/)
 
 Welcome Mike Rae,
 
