@@ -143,7 +143,7 @@ def main():
     stock_data = calculate_stock_data(sales_columns)
     update_worksheet(stock_data, 'stock')
     stock_values = get_stock_values(stock_data)
-    print(f'Next markwt sandwich stocks are :\n {stock_values}')
+    print(f'Next market sandwich stocks are :\n {stock_values}')
 
 
 print("Welcome to Love Sandwiches data automation\n")
